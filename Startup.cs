@@ -52,16 +52,16 @@ namespace api_demo
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api_demo v1"));
             }
-            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers().RequireCors(MyAllowSpecificOrigins);
+                endpoints.MapControllers();
             });
         }
     }
